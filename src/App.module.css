@@ -116,3 +116,30 @@ h1 {
 	color: white;
 	font-size: 42px;
 }
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: 35px;
+	}
+	.bnt_container {
+		margin: 50px 10px 50px 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap-reverse;
+		gap: 40px;
+	}
+	.input_search {
+		display: block;
+		margin: auto;
+		margin-bottom: 50px;
+		width: 250px;
+		font-size: 18px;
+	}
+
+	.input_add {
+		width: 250px;
+		height: 20px;
+		font-size: 18px;
+	}
+}

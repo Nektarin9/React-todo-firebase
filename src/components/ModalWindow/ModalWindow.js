@@ -3,9 +3,10 @@ import { UseBtnDeleteTask } from '../../hooks/UseBtnDeleteTask';
 import { useState } from 'react';
 import { UseBtnChangeTask } from '../../hooks/UseBtnChangeTask';
 
-export function ModalWindow({ setModal, obj_target, refreshTasks, setRefreshTasks }) {
+export function ModalWindow({ setModal, obj_target }) {
 	const [inputChangeValue, setInputChangeValue] = useState('');
 	const [inputError, setInputError] = useState(false);
+	console.log(obj_target.firstChild.innerHTML);
 	function changeTask() {
 		if (inputChangeValue.trim() !== '') {
 			UseBtnChangeTask(
@@ -20,11 +21,11 @@ export function ModalWindow({ setModal, obj_target, refreshTasks, setRefreshTask
 	}
 	return (
 		<section className={style.background_modal}>
-			<span onClick={() => setModal(false)} className={style.close}>
-				Закрыть
-			</span>
 			<div className={style.modal_container}>
-				<div className={style.task}>{obj_target.innerHTML}</div>
+				<span onClick={() => setModal(false)} className={style.close}>
+					Закрыть
+				</span>
+				<div className={style.task}>{obj_target.firstChild.textContent}</div>
 				<div className={style.bnt_container}>
 					<input
 						onChange={({ target }) => setInputChangeValue(target.value)}
@@ -45,7 +46,7 @@ export function ModalWindow({ setModal, obj_target, refreshTasks, setRefreshTask
 							UseBtnChangeTask(
 								obj_target.attributes[0].textContent,
 								setModal,
-								obj_target.innerHTML,
+								obj_target.firstChild.textContent,
 								true,
 							)
 						}
@@ -58,7 +59,7 @@ export function ModalWindow({ setModal, obj_target, refreshTasks, setRefreshTask
 							UseBtnChangeTask(
 								obj_target.attributes[0].textContent,
 								setModal,
-								obj_target.innerHTML,
+								obj_target.firstChild.textContent,
 								false,
 							)
 						}
